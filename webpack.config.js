@@ -1,9 +1,10 @@
 const path = require('path');
-const webpack = require('webpack')
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
-  entry: './app/index.ts',
+  entry: {main:'./app/index.ts'},
   output: {
-    filename: 'bundle.js',
+    filename: 'js/[name]].[hash].js',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -43,8 +44,11 @@ module.exports = {
   },
 
   plugins:[
-
-     new webpack.HotModuleReplacementPlugin(),
+      new HtmlWebpackPlugin({
+        
+      })
+    
+     //new webpack.HotModuleReplacementPlugin(),
 
   ],
 

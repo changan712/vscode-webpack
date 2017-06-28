@@ -81,7 +81,7 @@ var Index = function () {
     function Index() {
         this.name = 'index';
         var a = new _a.A();
-        console.log(a.name);
+        console.log(a.name, 11122222);
     }
     return Index;
 }();
@@ -107,8 +107,8 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 var A = function () {
     function A() {
-        this.name = 'aa';
-        console.log('aaaaaaaa');
+        this.name = '33';
+        console.log('555');
         console.log(_);
     }
     return A;
@@ -17264,4 +17264,4 @@ module.exports = function(module) {
 
 /***/ })
 /******/ ]);
-//# sourceMappingURL=bundle.js.map
+//# sourceMappingURL=main.7f0a88b387e96f2deb98.js.map

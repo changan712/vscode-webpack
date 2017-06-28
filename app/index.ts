@@ -6,7 +6,7 @@ export class Index {
     constructor() {
 
         let a = new A()
-        console.log(a.name,333333333333333333);
+        console.log(a.name,11122222);
     }
 
 }

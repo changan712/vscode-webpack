@@ -2,9 +2,9 @@
 import * as  _ from "lodash";
 
 export class A {
-    name: string = '3333333';
+    name: string = '33';
     constructor() {
-        console.log('aaaaaaaa');
+        console.log('555');
         console.log(_);
     }
 }
