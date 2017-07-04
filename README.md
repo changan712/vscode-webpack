@@ -1,0 +1,2 @@
+# vscode-webpack
+vscode-webpack
