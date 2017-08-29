@@ -1,9 +1,7 @@
 import _ from 'lodash';
-import { printMe } from './print';
+import { printMe } from './print.js';
 
-
-
-
+import './style/main.css'
 
 
 function component() {
@@ -18,8 +16,27 @@ function component() {
     btn.onclick = printMe;
 
     element.appendChild(btn);
-    
+
     return element;
 }
 
-document.body.appendChild(component());
+var element =  component();
+
+document.body.appendChild(element);
+
+
+console.log(process.env.NODE_ENV);
+
+
+ if (module.hot) {
+
+    module.hot.accept('./print.js', function () {
+
+        console.log('Accepting the updated printMe module!');
+        document.body.removeChild(element);
+        element = component(); // 重新渲染页面后，component 更新 click 事件处理
+        document.body.appendChild(element);
+    }, function (e) {
+        console.error(e)
+    })
+} 
