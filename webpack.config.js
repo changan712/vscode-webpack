@@ -9,11 +9,13 @@ const webpack = require('webpack');
 const config = {
     entry: {
         app: './src/index.js',
+        vendor: ['lodash']
 
     },
     devtool: 'inline-source-map',
     output: {
         filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
     devServer: {
@@ -35,13 +37,19 @@ const config = {
             title: 'output management',
             template: 'index.html'
         }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor'
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'common' // Specify the common bundle's name.
+        }),
         new CleanWebpackPlugin(['dist']),
         new webpack.HotModuleReplacementPlugin(),
         new WebpackManifestPlugin(),
         // new webpack.optimize.UglifyJsPlugin({
         //     // sourceMap: options.devtool && (options.devtool.indexOf('sourcemap' > 0 || options.devtool.indexOf('source-map') > 0)),
         // }),
-    
+
     ]
 
 
@@ -55,7 +63,7 @@ if (process.env.NODE_ENV === 'production') {
                 screw_ie8: true
             }
         })
-    ) 
+    )
 
 }
 

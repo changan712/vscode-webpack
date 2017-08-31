@@ -1,34 +1,45 @@
-import _ from 'lodash';
-import { printMe } from './print.js';
+
 
 import './style/main.css'
 
 
-function component() {
+function getComponent() {
 
-    var element = document.createElement('div');
+    return import('lodash').then(_ => {
 
-    var btn = document.createElement('button');
+        var element = document.createElement('div');
 
-    element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+        var btn = document.createElement('button');
 
-    btn.innerHTML = 'Click me and check the console!';
-    btn.onclick = printMe;
+        element.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-    element.appendChild(btn);
+        btn.innerHTML = 'Click me and check the console!';
+        btn.onclick = () => {
+            import('./print').then(md => {
+                let printMe = md.printMe;
+                printMe();
+            })
+        };
 
-    return element;
+        element.appendChild(btn);
+
+        return element;
+    })
+
+
 }
 
-var element =  component();
+var element;
 
-document.body.appendChild(element);
+getComponent().then(element => {
+    element = element;
+    document.body.appendChild(element);
+})
 
 
-console.log(process.env.NODE_ENV);
 
 
- if (module.hot) {
+if (module.hot) {
 
     module.hot.accept('./print.js', function () {
 
