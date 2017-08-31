@@ -1,4 +1,4 @@
 
 export function printMe() {
-    console.log('print me');
+    console.log('print 44444');
 }
